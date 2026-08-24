@@ -1,0 +1,162 @@
+[
+    {
+        "question": "What is LoRA?",
+        "expected_answer": "LoRA freezes pretrained model weights and trains low-rank matrices for adaptation.",
+        "generated_answer": "LoRA (Low-Rank Adaptation) is a method that freezes pre-trained model weights and injects trainable rank decomposition matrices into each layer of the architecture (such as the Transformer architecture), greatly reducing the number of trainable parameters for downstream tasks.",
+        "sources": [
+            {
+                "paper": "QLoRA.pdf",
+                "page": 3,
+                "chunk": 2
+            },
+            {
+                "paper": "LoRA.pdf",
+                "page": 10,
+                "chunk": 1
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 22,
+                "chunk": 1
+            },
+            {
+                "paper": "LoRA.pdf",
+                "page": 10,
+                "chunk": 2
+            },
+            {
+                "paper": "LoRA.pdf",
+                "page": 1,
+                "chunk": 1
+            }
+        ]
+    },
+    {
+        "question": "What is QLoRA?",
+        "expected_answer": "QLoRA combines 4-bit quantization with LoRA adapters to reduce memory usage during fine-tuning.",
+        "generated_answer": "Based on the provided documents, QLoRA is defined for a single linear layer in the quantized base model with a single LoRA adapter using specific components (such as a storage data type usually being 4-bit NormalFloat and a computation data type being 16-bit BrainFloat) to significantly reduce the required memory for finetuning models.",
+        "sources": [
+            {
+                "paper": "QLoRA.pdf",
+                "page": 5,
+                "chunk": 2
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 12,
+                "chunk": 2
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 16,
+                "chunk": 2
+            },
+            {
+                "paper": "LoRA.pdf",
+                "page": 10,
+                "chunk": 1
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 5,
+                "chunk": 3
+            }
+        ]
+    },
+    {
+        "question": "How does QLoRA reduce memory usage compared with regular fine-tuning?",
+        "expected_answer": "QLoRA uses a frozen 4-bit quantized base model, LoRA adapters, NF4 quantization, Double Quantization, and Paged Optimizers.",
+        "generated_answer": "Based on the provided documents, QLoRA reduces memory usage through the following innovations and techniques:\n\n* **4-bit NormalFloat (NF4) Quantization:** A data type that is information-theoretically optimal for normally distributed weights, used as the low-precision storage data type for the base model.\n* **Double Quantization:** A technique that reduces the average memory footprint by quantizing the quantization constants.\n* **Paged Optimizers:** A feature that uses NVIDIA unified memory to automatically page-to-page transfer optimizer states between the GPU and CPU RAM when the GPU occasionally runs out of memory, preventing memory spikes from causing out-of-memory errors. \n* **Backpropagating through a frozen, 4-bit quantized pretrained model:** It computes weight gradients only for the LoRA parameters (using 16-bit BrainFloat) rather than the 4-bit weights.",
+        "sources": [
+            {
+                "paper": "QLoRA.pdf",
+                "page": 5,
+                "chunk": 3
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 5,
+                "chunk": 2
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 1,
+                "chunk": 1
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 4,
+                "chunk": 1
+            },
+            {
+                "paper": "LoRA.pdf",
+                "page": 5,
+                "chunk": 1
+            }
+        ]
+    },
+    {
+        "question": "Why is NF4 used in QLoRA?",
+        "expected_answer": "NF4 is designed for normally distributed neural network weights and provides an information-theoretically optimal 4-bit data type.",
+        "generated_answer": "Based on the provided documents, NF4 is used in QLoRA because:\n\n* NF4 replicates 16-bit full finetuning and 16-bit LoRA finetuning performance on academic benchmarks (it fully recovers 16-bit LoRA MMLU performance).\n* NF4 is superior to FP4 (and Int4) in terms of quantization precision, improving performance significantly over them.",
+        "sources": [
+            {
+                "paper": "QLoRA.pdf",
+                "page": 7,
+                "chunk": 2
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 6,
+                "chunk": 3
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 5,
+                "chunk": 3
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 23,
+                "chunk": 2
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 6,
+                "chunk": 1
+            }
+        ]
+    },
+    {
+        "question": "What are the advantages of LoRA over full fine-tuning?",
+        "expected_answer": "LoRA trains far fewer parameters, reduces memory and storage requirements, and can be merged with the pretrained weights without additional inference latency.",
+        "generated_answer": "I could not find the answer in the provided documents.",
+        "sources": [
+            {
+                "paper": "QLoRA.pdf",
+                "page": 6,
+                "chunk": 2
+            },
+            {
+                "paper": "LoRA.pdf",
+                "page": 21,
+                "chunk": 1
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 6,
+                "chunk": 1
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 14,
+                "chunk": 3
+            },
+            {
+                "paper": "QLoRA.pdf",
+                "page": 22,
+                "chunk": 1
+            }
+        ]
+    }
+]

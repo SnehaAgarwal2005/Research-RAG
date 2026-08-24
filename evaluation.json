@@ -1,0 +1,27 @@
+[
+    {
+        "question": "What is LoRA?",
+        "expected": "LoRA freezes pretrained model weights and trains low-rank matrices for adaptation.",
+        "expected_sources": ["LoRA.pdf"]
+    },
+    {
+        "question": "What is QLoRA?",
+        "expected": "QLoRA combines 4-bit quantization with LoRA adapters to reduce memory usage during fine-tuning.",
+        "expected_sources": ["QLoRA.pdf"]
+    },
+    {
+        "question": "How does QLoRA reduce memory usage compared with regular fine-tuning?",
+        "expected": "QLoRA uses a frozen 4-bit quantized base model, LoRA adapters, NF4 quantization, Double Quantization, and Paged Optimizers.",
+        "expected_sources": ["QLoRA.pdf"]
+    },
+    {
+        "question": "Why is NF4 used in QLoRA?",
+        "expected": "NF4 is designed for normally distributed neural network weights and provides an information-theoretically optimal 4-bit data type.",
+        "expected_sources": ["QLoRA.pdf"]
+    },
+    {
+        "question": "What are the advantages of LoRA over full fine-tuning?",
+        "expected": "LoRA trains far fewer parameters, reduces memory and storage requirements, and can be merged with the pretrained weights without additional inference latency.",
+        "expected_sources": ["LoRA.pdf"]
+    }
+]
