@@ -150,6 +150,7 @@ typing_extensions==4.16.0
 tzdata==2026.3
 urllib3==2.7.0
 uuid_utils==0.17.0
+fastapi
 uvicorn==0.52.1
 watchdog==6.0.0
 websockets==15.0.1
